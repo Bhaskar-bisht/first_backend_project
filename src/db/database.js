@@ -10,5 +10,5 @@ const DB_Connection = async () => {
         process.exit(1)
     }
 }
-
+ 
 export default DB_Connection;
