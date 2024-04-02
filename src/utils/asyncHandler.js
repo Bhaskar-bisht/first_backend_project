@@ -2,28 +2,28 @@
 
 // The { next } parameter use for a Middlewares Use
 
-const asyncHandler = (fun) => async(req, res, next) => {
-    try {
-        await fun(req, res, next)
-    } catch (error) {
-        res.status(error.code || 500).json({ // this is a json error send for frontend
-            success: false,
-            message: error.message
-        })
-    }
-}
+// const asyncHandler = (fun) => async(req, res, next) => {
+//     try {
+//         await fun(req, res, next)
+//     } catch (error) {
+//         res.status(error.code || 500).json({ // this is a json error send for frontend
+//             success: false,
+//             message: error.message
+//         })
+//     }
+// }
 
 
 
 // the same function create by promises methods
 
-const asyncHandler2 = (requestHandler) => {
-    (req, res, next) => {
+const asyncHandler = (requestHandler) => {
+    return (req, res, next) => {
         Promise.resolve(requestHandler(req, res, next)).catch((err) => next(err))
     }
 }
 
 
 export {asyncHandler}
-export {asyncHandler2}
+// export {asyncHandler2}
 

@@ -18,4 +18,13 @@ app.use(express.urlencoded({
 app.use(express.static("public")) // ies ka use hum kbhi frontend se koi file, image, pdf aaye hai to ouse hum apne  local server main store krke rakh sakte hai or ise publicly koi bhe access kr sakta hai
 app.use(cookieParser())
 
+
+// routes
+
+import userRouter from './routes/user.routes.js'
+
+// routes Declear
+ 
+app.use("/api/v1/users", userRouter)
+
 export {app}
